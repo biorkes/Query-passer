@@ -1,20 +1,26 @@
 (function() {
-    var href;
-    document.querySelectorAll('a').forEach(function(ele){
-        href = ele.getAttribute('href');
-        if (href !== "undefined" && href != null && href && href.length > 1) {
-            if (href !== 'undefined' || href.substr(0) != '' || href !== null) {
-                if (href.substr(0, 1) == '#') {
-                    href = location.search + href;
-                } else if (href.indexOf('#') > 0) {
+
+    if(location.search === ""){
+        return;
+    }
+
+    document.querySelectorAll('[href]').forEach(function(ele){
+        var href = ele.getAttribute('href');
+        if (href !== 'undefined' || href.substr(0) != '' || href != null) {
+            switch(true){
+                case (href.substr(0, 1) == '#'):
+                    ele.setAttribute('href', location.search + href);
+                    break;
+                case (href.indexOf('#') > 0):
                     href = href.split('#');
-                    href = href[0] + location.search + '#' + href[1];
-                } else if ( href.indexOf('?') > 0 || href.indexOf('&') > 0 ) {
-                    href = href + '&' + location.search.substring(1);
-                } else {
-                    href += location.search;
-                }
-                ele.setAttribute('href', href)
+                    ele.setAttribute('href', href[0] + location.search + '#' + href[1]);
+                    break;
+                case (href.indexOf('?') > 0 || href.indexOf('&') > 0):
+                    ele.setAttribute('href', href + '&' + location.search.substring(1));
+                    break;
+                default:
+                    ele.setAttribute('href', href + location.search);
+                    break;
             }
         }
     });
