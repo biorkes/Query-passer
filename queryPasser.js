@@ -4,7 +4,7 @@
         return;
     }
 
-    document.querySelectorAll('[href]').forEach(function(ele){
+    document.querySelectorAll('a[href]').forEach(function(ele){
         var href = ele.getAttribute('href');
         if (href !== 'undefined' || href.substr(0) != '' || href != null) {
             switch(true){

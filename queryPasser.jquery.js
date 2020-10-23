@@ -5,7 +5,7 @@ $(document).ready(function() {
             return;
         }
 
-        $('[href]').each(function() {
+        $('a[href]').each(function() {
             href = $(this).attr('href');
             if (href !== 'undefined' || href.substr(0) != '' || href != null) {
                 switch(true){
