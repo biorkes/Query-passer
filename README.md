@@ -1,5 +1,7 @@
 # Query-passer
 
+[![](https://data.jsdelivr.com/v1/package/gh/biorkes/Query-passer/badge)](https://www.jsdelivr.com/package/gh/biorkes/Query-passer)
+
 Query-passer is a simple script that passes all query strings from the current URL to all existing `<a>` tags in a page.
 
 The script helps you to keep the query strings across all pages in your website.
